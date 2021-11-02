@@ -1,13 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect} from "react";
-import { StyleSheet, Text, View , TouchableOpacity } from "react-native";
+import { StyleSheet, ImageBackground, Image,Text, View , TouchableOpacity } from "react-native";
 import Box from "./components/Box";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function App() {
   const [boxes, setBoxes] = useState(Array(9).fill(null));
   const [IsXChance, setIsXChance] = useState(true);
   const [winner, setWinner] = useState(null);
   const [draw, setDraw] = useState(false)
+  
 
   function PlayBox(no) {
     return (
@@ -68,7 +70,7 @@ export default function App() {
   }
 
   useEffect(()=> {
- checkDraw()
+    checkDraw()
     calWin()
    
 
@@ -78,22 +80,20 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" backgroundColor="gray" />
+      <ImageBackground source={require("./Background.jpg" )} resizeMode="cover" style={styles.stretch}>
 
-      <TouchableOpacity onPress={reset}  >
-         <Text style={styles.resetButton} > Reset </Text>
-         </TouchableOpacity> 
-
-      <View style={styles.Banner} >
+ 
+      <View >
 
         {winner !== null ?
-        <Text  > Winner: {winner} </Text>
-        : <Text>  { draw === false ? <Text> {IsXChance ? 'X' : 'O'} </Text> : <Text>Draw</Text>  }  </Text> 
+        <Text style={styles.Banner} > Winner {winner} </Text>
+        : <Text style={styles.Banner} >    { draw === false ? <Text> { IsXChance ? 'Chance X'  : 'Chance: O'} </Text> : <Text>Draw</Text>  }  </Text> 
          
         }
 
       </View>
 
-      <View style={styles.playBoard}>
+      <View >
         <View style={styles.row}>
           {PlayBox(0)}
           {PlayBox(1)}
@@ -112,6 +112,11 @@ export default function App() {
           {PlayBox(8)}
         </View>
       </View>
+      <TouchableOpacity onPress={reset}  >
+         <Text style={styles.resetButton} >   <MaterialCommunityIcons name="restart" size={80} color="#822d00" /> </Text>
+         </TouchableOpacity> 
+
+      </ImageBackground>
     </View>
   );
 }
@@ -128,9 +133,34 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
-  playBoard: {
 
+  stretch: {        flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    minWidth: "100%",
+    
+  
+  }
+    ,
+
+  Banner: {
+ 
+    fontWeight: 'bold',
+    color: '#efe3dc',
+    fontSize: 40,
+    margin: 20
 
 
   },
+
+  resetButton: {
+    fontWeight: 'bold',
+    color: '#ffe7db',
+    fontSize: 50,
+    marginTop: 60,
+    paddingTop: 40,
+
+  
+
+  }
 });
