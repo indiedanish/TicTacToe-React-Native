@@ -40,6 +40,7 @@ export default function App() {
         && boxes[winPos[i][0]] === boxes[winPos[i][2]]   )
       
       {
+        
         setWinner(boxes[winPos[i][0]])
         return
 
@@ -50,12 +51,15 @@ export default function App() {
   }
 
   function checkDraw() {
+
      for (let i  = 0; i < boxes.length; i++) { 
 
-      if ( boxes[i] === null ) {setDraw(false) ;break; }
-      else {setDraw (true); break;}
+      if ( boxes[i] === null ) {setDraw(false) ;break ; }
+      else {setDraw(true) }
+      
 
      } 
+     
 
      
   }
@@ -70,16 +74,19 @@ export default function App() {
   }
 
   useEffect(()=> {
-    checkDraw()
+    
     calWin()
+    checkDraw()
+    
    
 
   } , [IsXChance] )
 
 
+
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" backgroundColor="gray" />
+      <StatusBar style="auto" backgroundColor="orange" />
       <ImageBackground source={require("./Background.jpg" )} resizeMode="cover" style={styles.stretch}>
 
  
@@ -87,7 +94,7 @@ export default function App() {
 
         {winner !== null ?
         <Text style={styles.Banner} > Winner {winner} </Text>
-        : <Text style={styles.Banner} >    { draw === false ? <Text> { IsXChance ? 'Chance X'  : 'Chance: O'} </Text> : <Text>Draw</Text>  }  </Text> 
+        : <Text style={styles.Banner} >    { draw === false ? <Text> { IsXChance ? 'Chance X'  : 'Chance O'} </Text> : <Text>Draw</Text>  }  </Text> 
          
         }
 
