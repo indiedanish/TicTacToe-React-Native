@@ -80,7 +80,7 @@ export default function App() {
       <StatusBar style="auto" backgroundColor="gray" />
 
       <TouchableOpacity onPress={reset}  >
-         <Text style={styles.resetButton} > Reset </Text>git 
+         <Text style={styles.resetButton} > Reset </Text>
          </TouchableOpacity> 
 
       <View style={styles.Banner} >
