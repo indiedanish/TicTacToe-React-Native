@@ -55,7 +55,7 @@ export default function App() {
      for (let i  = 0; i < boxes.length; i++) { 
 
       if ( boxes[i] === null ) {setDraw(false) ;break ; }
-      else {setDraw(true) }
+      else {setDraw(true) ;}
       
 
      } 
