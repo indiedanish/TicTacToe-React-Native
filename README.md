@@ -13,5 +13,5 @@
 
 [Screenshot](https://github.com/indiedanish/TicTacToe/blob/main/Tic%20Tac%20Toe.jpeg)
 
-![alt text](https://github.com/indiedanish/TicTacToe/blob/main/Tic%20Tac%20Toe.jpeg)
+<img src="https://github.com/indiedanish/TicTacToe/blob/main/Tic%20Tac%20Toe.jpeg" width="250">
 
